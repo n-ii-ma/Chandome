@@ -1,6 +1,7 @@
 {
   "expo": {
     "name": "Emrooz Chandome?",
+    "description": "An App which Gives Today's Date",
     "slug": "Chandome",
     "version": "1.0.0",
     "orientation": "portrait",
