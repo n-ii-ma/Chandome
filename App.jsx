@@ -3,6 +3,7 @@ import { StatusBar } from "expo-status-bar";
 import { StyleSheet, ImageBackground } from "react-native";
 import { useState, useEffect, useCallback } from "react";
 import * as SplashScreen from "expo-splash-screen";
+import axios from "axios";
 
 import Date from "./components/Date";
 
@@ -16,10 +17,11 @@ import {
 SplashScreen.preventAutoHideAsync();
 
 const App = () => {
-  const [gregorianToday, setGregorianToday] = useState(null); // Today in Gregorian
-  const [jalaliToday, setJalaliToday] = useState(null); // Today in Jalali
-  const [hijriToday, setHijriToday] = useState(null); // Today in Hijri
+  const [gregorianToday, setGregorianToday] = useState(""); // Today in Gregorian
+  const [jalaliToday, setJalaliToday] = useState(""); // Today in Jalali
+  const [hijriToday, setHijriToday] = useState(""); // Today in Hijri
   const [isHoliday, setIsHoliday] = useState(false); // Is today a holiday
+  const [holidayDesc, setHolidayDesc] = useState(""); // Holiday description
   const [appIsReady, setAppIsReady] = useState(false); // Is app ready to render
 
   // Load data
@@ -32,13 +34,24 @@ const App = () => {
 
       // Send request to check if today is a Jalali holiday
       try {
-        const response = await fetch(
+        const response = await axios.get(
           `https://holidayapi.ir/jalali/${getJalaliToday().brief}`
         );
-        const data = await response.json();
+
+        // Get the holiday event
+        const holidayEvent = response.data?.events.find(
+          (event) => event?.is_holiday
+        );
+
+        // Set the holiday's description
+        if (holidayEvent !== undefined) {
+          setHolidayDesc(holidayEvent?.description);
+        } else {
+          setHolidayDesc("");
+        }
 
         // Set is holiday state based on response
-        if (data?.is_holiday) {
+        if (response.data?.is_holiday) {
           setIsHoliday(true);
         } else {
           setIsHoliday(false);
@@ -78,6 +91,7 @@ const App = () => {
         jalaliToday={jalaliToday}
         hijriToday={hijriToday}
         isHoliday={isHoliday}
+        holidayDesc={holidayDesc}
       />
       <StatusBar style="light" />
     </ImageBackground>
