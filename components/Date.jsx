@@ -1,18 +1,29 @@
-import { StyleSheet, Text, View } from "react-native";
+import { StyleSheet, Text } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
 import { ms } from "react-native-size-matters";
+
+import AnimatedComponent from "./AnimatedComponent";
 
 const Date = ({ gregorianToday, jalaliToday, hijriToday, isHoliday }) => (
   <LinearGradient
     style={styles.container}
     colors={["rgba(0, 0, 0, 0.9)", "rgba(1, 158, 255, 0.9)"]}
   >
-    <View style={{ width: "100%" }}>
+    <AnimatedComponent
+      from={{ opacity: 0, translateX: -ms(50) }}
+      animate={{ opacity: 1, translateX: 0 }}
+      transition={{ type: "spring" }}
+      style={{ width: "100%" }}
+    >
       <Text style={[styles.otherDateTxt, { alignSelf: "flex-start" }]}>
         {gregorianToday}
       </Text>
-    </View>
-    <View style={{ width: "100%" }}>
+    </AnimatedComponent>
+    <AnimatedComponent
+      from={{ opacity: 0, scale: 0 }}
+      animate={{ opacity: 1, scale: 1 }}
+      style={{ width: "100%" }}
+    >
       <Text
         style={[
           styles.jalaliDateTxt,
@@ -21,12 +32,17 @@ const Date = ({ gregorianToday, jalaliToday, hijriToday, isHoliday }) => (
       >
         {jalaliToday}
       </Text>
-    </View>
-    <View style={{ width: "100%" }}>
+    </AnimatedComponent>
+    <AnimatedComponent
+      from={{ opacity: 0, translateX: ms(50) }}
+      animate={{ opacity: 1, translateX: 0 }}
+      transition={{ type: "spring" }}
+      style={{ width: "100%" }}
+    >
       <Text style={[styles.otherDateTxt, { alignSelf: "flex-end" }]}>
         {hijriToday}
       </Text>
-    </View>
+    </AnimatedComponent>
   </LinearGradient>
 );
 
