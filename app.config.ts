@@ -51,6 +51,7 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
       monochromeImage: "./assets/monochrome-icon.png",
     },
     package: "com.nima96.Chandome",
+    versionCode: 2,
   },
   web: {
     favicon: "./assets/favicon.png",
