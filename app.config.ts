@@ -6,13 +6,13 @@ const widgetConfig: WithAndroidWidgetsParams = {
     {
       name: "Date", // This name will be the **name** with which we will reference our widget.
       label: "امروز چندمه؟", // Label shown in the widget picker
-      // 4 x 1 cells (70 × n − 30) **n is number of cells**
-      minWidth: `${70 * 4 - 30}dp`,
+      // Min 3 x 1 cells (70 × n − 30) **n is number of cells**
+      minWidth: `${70 * 3 - 30}dp`,
       minHeight: `${70 * 1 - 30}dp`,
       description: "Get Today's Date in Gregorian", // Description shown in the widget picker
       previewImage: "./assets/date_preview.png", // Path to widget preview image
       resizeMode: "horizontal",
-      // 5 x 1 cells
+      // Max 5 x 1 cells
       maxResizeWidth: `${70 * 5 - 30}dp`,
 
       // How often, in milliseconds, that this AppWidget wants to be updated.
