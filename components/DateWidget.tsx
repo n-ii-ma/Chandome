@@ -10,7 +10,7 @@ const DateWidget = () => (
       width: "match_parent",
       justifyContent: "center",
       alignItems: "center",
-      backgroundColor: "#ffffff",
+      backgroundColor: "rgba(63, 38, 172, 0.8)",
       borderRadius: 16,
     }}
   >
@@ -18,7 +18,7 @@ const DateWidget = () => (
       text={getJalaliToday().verbose}
       style={{
         fontSize: 24,
-        color: "#000000",
+        color: "#ffffff",
       }}
     />
   </FlexWidget>
