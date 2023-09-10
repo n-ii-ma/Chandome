@@ -48,9 +48,9 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
   },
   android: {
     adaptiveIcon: {
-      foregroundImage: "./assets/icons/foreground-icon.png",
-      backgroundImage: "./assets/icons/background-icon.png",
-      monochromeImage: "./assets/icons/monochrome-icon.png",
+      foregroundImage: "./assets/icons/icon_foreground.png",
+      backgroundImage: "./assets/icons/icon_background.png",
+      monochromeImage: "./assets/icons/icon_monochrome.png",
     },
     package: "com.nima96.Chandome",
     versionCode: 2,
