@@ -10,7 +10,7 @@ const widgetConfig: WithAndroidWidgetsParams = {
       minWidth: `${70 * 3 - 30}dp`,
       minHeight: `${70 * 1 - 30}dp`,
       description: "Get Today's Date in Gregorian", // Description shown in the widget picker
-      previewImage: "./assets/date_preview.png", // Path to widget preview image
+      previewImage: "./assets/images/date_widget_preview.png", // Path to widget preview image
       resizeMode: "horizontal",
       // Max 5 x 1 cells
       maxResizeWidth: `${70 * 5 - 30}dp`,
@@ -32,11 +32,11 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
   slug: "Chandome",
   version: "2.0.0",
   orientation: "portrait",
-  icon: "./assets/icon.png",
+  icon: "./assets/icons/icon.png",
   userInterfaceStyle: "light",
   plugins: [["react-native-android-widget", widgetConfig]],
   splash: {
-    image: "./assets/splash.png",
+    image: "./assets/images/splash.png",
     resizeMode: "contain",
     backgroundColor: "#000000",
   },
@@ -46,15 +46,15 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
   },
   android: {
     adaptiveIcon: {
-      foregroundImage: "./assets/foreground-icon.png",
-      backgroundImage: "./assets/background-icon.png",
-      monochromeImage: "./assets/monochrome-icon.png",
+      foregroundImage: "./assets/icons/foreground-icon.png",
+      backgroundImage: "./assets/icons/background-icon.png",
+      monochromeImage: "./assets/icons/monochrome-icon.png",
     },
     package: "com.nima96.Chandome",
     versionCode: 2,
   },
   web: {
-    favicon: "./assets/favicon.png",
+    favicon: "./assets/icons/favicon.png",
   },
   extra: {
     eas: {
