@@ -10,7 +10,11 @@ const DateWidget = () => (
       width: "match_parent",
       justifyContent: "center",
       alignItems: "center",
-      backgroundColor: "rgba(63, 38, 172, 0.8)",
+      backgroundGradient: {
+        from: "rgba(1, 158, 255, 0.8)",
+        to: "rgba(63, 38, 172, 0.8)",
+        orientation: "LEFT_RIGHT",
+      },
       borderRadius: 16,
     }}
   >

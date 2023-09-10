@@ -13,7 +13,7 @@ const Date = ({
 }) => (
   <LinearGradient
     style={styles.container}
-    colors={["rgba(0, 0, 0, 0.9)", "rgba(1, 158, 255, 0.9)"]}
+    colors={["rgba(1, 158, 255, 0.9)", "rgba(63, 38, 172, 0.9)"]}
   >
     <AnimatedComponent
       from={{ opacity: 0, translateX: -ms(50) }}
