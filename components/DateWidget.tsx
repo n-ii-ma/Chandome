@@ -1,4 +1,5 @@
 import { FlexWidget, TextWidget } from "react-native-android-widget";
+import { ms } from "react-native-size-matters";
 
 import { getJalaliToday } from "../utils/dates";
 
@@ -21,8 +22,10 @@ const DateWidget = () => (
     <TextWidget
       text={getJalaliToday().verbose}
       style={{
-        fontSize: 24,
+        fontFamily: "Vazirmatn-Regular",
+        fontSize: ms(22),
         color: "#ffffff",
+        textAlign: "center",
       }}
     />
   </FlexWidget>

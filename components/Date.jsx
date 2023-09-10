@@ -92,10 +92,12 @@ const styles = StyleSheet.create({
     justifyContent: "center",
   },
   jalaliDateTxt: {
-    fontSize: ms(24),
+    fontFamily: "Vazirmatn-Regular",
+    fontSize: ms(22),
+    textAlign: "center",
     color: "#fff",
     alignSelf: "center",
-    paddingHorizontal: ms(20),
+    paddingHorizontal: ms(18),
     paddingVertical: vs(5),
     borderRadius: 25,
     shadowColor: "#000",
@@ -108,13 +110,15 @@ const styles = StyleSheet.create({
     elevation: 9,
   },
   otherDateTxt: {
-    fontSize: ms(20),
+    fontFamily: "Vazirmatn-Regular",
+    fontSize: ms(18),
     color: "#fff",
   },
   holidayDescTxt: {
-    color: "#fff",
+    fontFamily: "Vazirmatn-Regular",
     fontSize: ms(12),
-    marginTop: vs(10),
     textAlign: "center",
+    color: "#fff",
+    marginTop: vs(10),
   },
 });

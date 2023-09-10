@@ -2,6 +2,7 @@ import "react-native-reanimated";
 import { StatusBar } from "expo-status-bar";
 import { StyleSheet, ImageBackground } from "react-native";
 import { useState, useEffect, useCallback } from "react";
+import { useFonts } from "expo-font";
 import * as SplashScreen from "expo-splash-screen";
 import axios from "axios";
 
@@ -23,6 +24,11 @@ const App = () => {
   const [isHoliday, setIsHoliday] = useState(false); // Is today a holiday
   const [holidayDesc, setHolidayDesc] = useState(""); // Holiday description
   const [appIsReady, setAppIsReady] = useState(false); // Is app ready to render
+
+  // Load Fonts
+  const [fontsLoaded] = useFonts({
+    "Vazirmatn-Regular": require("./assets/fonts/Vazirmatn-Regular.ttf"),
+  });
 
   // Load data
   useEffect(() => {
@@ -68,10 +74,10 @@ const App = () => {
 
   // Hide the splash screen after the root view has already performed layout
   const onLayoutRootView = useCallback(async () => {
-    if (appIsReady) {
+    if (appIsReady && fontsLoaded) {
       await SplashScreen.hideAsync();
     }
-  }, [appIsReady]);
+  }, [appIsReady, fontsLoaded]);
 
   // Return null if app is not ready to render
   if (!appIsReady) {
@@ -80,7 +86,7 @@ const App = () => {
 
   return (
     <ImageBackground
-      source={require("./assets/black_sand_dunes.jpg")}
+      source={require("./assets/images/black_sand_dunes.jpg")}
       style={styles.container}
       resizeMode="cover"
       alt="Black sand dunes"
