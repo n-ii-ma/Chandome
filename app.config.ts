@@ -11,7 +11,7 @@ const widgetConfig: WithAndroidWidgetsParams = {
       // Min 3 x 1 cells (70 × n − 30) **n is number of cells**
       minWidth: `${70 * 3 - 30}dp`,
       minHeight: `${70 * 1 - 30}dp`,
-      description: "Get Today's Date in Gregorian", // Description shown in the widget picker
+      description: "Get Today's Date in Jalali Calendar", // Description shown in the widget picker
       previewImage: "./assets/images/date_widget_preview.png", // Path to widget preview image
       resizeMode: "horizontal",
       // Max 5 x 1 cells
