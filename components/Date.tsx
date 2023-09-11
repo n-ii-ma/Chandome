@@ -1,8 +1,9 @@
 import { StyleSheet, View, Text } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
+import { MotiView } from "moti";
 import { ms, vs } from "react-native-size-matters";
 
-import AnimatedComponent from "./AnimatedComponent";
+import type { DateProps } from "../types";
 
 const Date = ({
   gregorianToday,
@@ -10,12 +11,12 @@ const Date = ({
   hijriToday,
   isHoliday,
   holidayDesc,
-}) => (
+}: DateProps) => (
   <LinearGradient
     style={styles.container}
     colors={["rgba(1, 158, 255, 0.9)", "rgba(63, 38, 172, 0.9)"]}
   >
-    <AnimatedComponent
+    <MotiView
       from={{ opacity: 0, translateX: -ms(50) }}
       animate={{ opacity: 1, translateX: 0 }}
       transition={{ type: "spring" }}
@@ -24,9 +25,9 @@ const Date = ({
       <Text style={[styles.otherDateTxt, { alignSelf: "flex-start" }]}>
         {gregorianToday}
       </Text>
-    </AnimatedComponent>
+    </MotiView>
     <View style={styles.jalaliContainer}>
-      <AnimatedComponent
+      <MotiView
         from={{ opacity: 0, scale: 0 }}
         animate={{ opacity: 1, scale: 1 }}
         style={{ width: "100%" }}
@@ -39,9 +40,9 @@ const Date = ({
         >
           {jalaliToday}
         </Text>
-      </AnimatedComponent>
+      </MotiView>
       {holidayDesc && (
-        <AnimatedComponent
+        <MotiView
           from={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{
@@ -50,10 +51,10 @@ const Date = ({
           }}
         >
           <Text style={styles.holidayDescTxt}>{holidayDesc}</Text>
-        </AnimatedComponent>
+        </MotiView>
       )}
     </View>
-    <AnimatedComponent
+    <MotiView
       from={{ opacity: 0, translateX: ms(50) }}
       animate={{ opacity: 1, translateX: 0 }}
       transition={{ type: "spring" }}
@@ -62,7 +63,7 @@ const Date = ({
       <Text style={[styles.otherDateTxt, { alignSelf: "flex-end" }]}>
         {hijriToday}
       </Text>
-    </AnimatedComponent>
+    </MotiView>
   </LinearGradient>
 );
 
