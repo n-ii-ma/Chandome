@@ -2,6 +2,8 @@ import { format } from "date-fns-jalali";
 import moment from "moment";
 import momentHijri from "moment-hijri";
 
+import type { GetJalaliTodayArgs } from "../types";
+
 import convertToFarsi from "./numberConversion";
 
 // Today's date
@@ -12,7 +14,7 @@ export const getGregorianToday = (): string =>
   moment(today).format("D MMMM, YYYY");
 
 // Get today's date in Jalali
-export const getJalaliToday = (): { brief: string; verbose: string } => {
+export const getJalaliToday = (): GetJalaliTodayArgs => {
   const brief = format(today, "yyyy/MM/dd");
   const verbose = convertToFarsi(format(today, "eeee، d MMMM yyyy"));
 
