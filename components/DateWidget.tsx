@@ -18,7 +18,8 @@ const DateWidget = () => (
       },
       borderRadius: 16,
       paddingHorizontal: ms(8),
-      marginVertical: vs(25),
+      paddingVertical: vs(2),
+      marginVertical: vs(18),
     }}
   >
     <TextWidget
