@@ -1,18 +1,20 @@
 import "react-native-reanimated";
 import { StatusBar } from "expo-status-bar";
-import { StyleSheet, ImageBackground } from "react-native";
+import { StyleSheet, ImageBackground, Text } from "react-native";
 import { useState, useEffect, useCallback } from "react";
 import { useFonts } from "expo-font";
 import * as SplashScreen from "expo-splash-screen";
 import axios from "axios";
-
-import Date from "./components/Date";
+import { ms } from "react-native-size-matters";
 
 import {
   getGregorianToday,
   getJalaliToday,
   getHijriToday,
 } from "./utils/dates";
+import { version } from "./package.json";
+
+import Date from "./components/Date";
 
 // Keep the splash screen visible until resources are fetched
 SplashScreen.preventAutoHideAsync();
@@ -99,6 +101,7 @@ const App = () => {
         isHoliday={isHoliday}
         holidayDesc={holidayDesc}
       />
+      <Text style={styles.versionTxt}>v{version}</Text>
       <StatusBar style="light" />
     </ImageBackground>
   );
@@ -111,5 +114,12 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: "center",
     justifyContent: "center",
+  },
+  versionTxt: {
+    fontFamily: "Vazirmatn-Regular",
+    fontSize: ms(10),
+    color: "grey",
+    position: "absolute",
+    bottom: 0,
   },
 });
