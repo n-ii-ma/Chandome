@@ -8,12 +8,11 @@ import convertToFarsi from "./numberConversion";
 const today = new Date();
 
 // Get today's date in Gregorian
-export const getGregorianToday = () => {
-  return moment(today).format("D MMMM, YYYY");
-};
+export const getGregorianToday = (): string =>
+  moment(today).format("D MMMM, YYYY");
 
 // Get today's date in Jalali
-export const getJalaliToday = () => {
+export const getJalaliToday = (): { brief: string; verbose: string } => {
   const brief = format(today, "yyyy/MM/dd");
   const verbose = convertToFarsi(format(today, "eeee، d MMMM yyyy"));
 
@@ -24,6 +23,5 @@ export const getJalaliToday = () => {
 };
 
 // Get today's date in Hijri
-export const getHijriToday = () => {
-  return convertToFarsi(momentHijri(today).format("iD iMMMM، iYYYY"));
-};
+export const getHijriToday = (): string =>
+  convertToFarsi(momentHijri(today).format("iD iMMMM، iYYYY"));
