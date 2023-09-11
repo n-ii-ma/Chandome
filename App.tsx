@@ -46,7 +46,7 @@ const App = () => {
 
         // Get the holiday event
         const holidayEvent = response.data?.events.find(
-          (event) => event?.is_holiday
+          (event: any) => event?.is_holiday
         );
 
         // Set the holiday's description
