@@ -34,7 +34,8 @@
     "typescript": "^5.2.2"
   },
   "devDependencies": {
-    "@babel/core": "^7.22.17"
+    "@babel/core": "^7.22.17",
+    "@types/moment-hijri": "^2.1.0"
   },
   "private": true
 }
