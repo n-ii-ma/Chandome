@@ -1,7 +1,7 @@
 import { FlexWidget, TextWidget } from "react-native-android-widget";
 import { ms, vs } from "react-native-size-matters";
 
-import { getJalaliToday } from "../utils/dates";
+import { getJalaliToday } from "@/utils/dates";
 
 const DateWidget = () => (
   <FlexWidget

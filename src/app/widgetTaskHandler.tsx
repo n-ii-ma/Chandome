@@ -1,6 +1,6 @@
 import type { WidgetTaskHandlerProps } from "react-native-android-widget";
 
-import DateWidget from "./components/DateWidget";
+import DateWidget from "@/components/DateWidget";
 
 const nameToWidget = {
   // Date will be the **name** with which we will reference our widget.

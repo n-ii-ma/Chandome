@@ -2,7 +2,7 @@ import { format } from "date-fns-jalali";
 import moment from "moment";
 import momentHijri from "moment-hijri";
 
-import type { GetJalaliTodayArgs } from "../types";
+import type { GetJalaliTodayArgs } from "@/global/types";
 
 import convertToFarsi from "./numberConversion";
 

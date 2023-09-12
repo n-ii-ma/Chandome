@@ -3,7 +3,7 @@ import { LinearGradient } from "expo-linear-gradient";
 import { MotiView } from "moti";
 import { ms, vs } from "react-native-size-matters";
 
-import type { DateProps } from "../types";
+import type { DateProps } from "@/global/types";
 
 const Date = ({
   gregorianToday,

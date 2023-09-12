@@ -11,10 +11,10 @@ import {
   getGregorianToday,
   getJalaliToday,
   getHijriToday,
-} from "./utils/dates";
-import { version } from "./package.json";
+} from "@/utils/dates";
+import { version } from "package.json";
 
-import Date from "./components/Date";
+import Date from "@/components/Date";
 
 // Keep the splash screen visible until resources are fetched
 SplashScreen.preventAutoHideAsync();
@@ -29,7 +29,7 @@ const App = () => {
 
   // Load Fonts
   const [fontsLoaded] = useFonts({
-    "Vazirmatn-Regular": require("./assets/fonts/Vazirmatn-Regular.ttf"),
+    "Vazirmatn-Regular": require("../../assets/fonts/Vazirmatn-Regular.ttf"),
   });
 
   // Load data
@@ -88,7 +88,7 @@ const App = () => {
 
   return (
     <ImageBackground
-      source={require("./assets/images/black_sand_dunes.jpg")}
+      source={require("../../assets/images/black_sand_dunes.jpg")}
       style={styles.container}
       resizeMode="cover"
       alt="Black sand dunes"
