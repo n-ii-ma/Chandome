@@ -43,7 +43,7 @@ $ npx expo start --dev-client
 
 ## Screenshots
 <img src="https://github.com/n-ii-ma/Chandome/assets/88039431/150b4b5b-db6c-4a4b-aa38-17f8f8a8b6a4.png" width="350" />
-<img src="https://github.com/n-ii-ma/Chandome/assets/88039431/947f9448-dc15-4fa2-b5b1-be581ec16d9b.png" width="350" />
+<img src="https://github.com/n-ii-ma/Chandome/assets/88039431/d197192f-afa5-46d8-9ec6-e53b7c7010f5.png" width="350" />
 
 ## License
 Distributed under the [MIT](https://opensource.org/licenses/MIT) License.
