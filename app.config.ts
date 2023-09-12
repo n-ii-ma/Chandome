@@ -37,6 +37,9 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
   icon: "./assets/icons/icon.png",
   userInterfaceStyle: "light",
   plugins: [["react-native-android-widget", widgetConfig]],
+  experiments: {
+    tsconfigPaths: true,
+  },
   splash: {
     image: "./assets/images/splash.png",
     resizeMode: "contain",
