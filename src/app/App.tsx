@@ -4,7 +4,6 @@ import { StyleSheet, ImageBackground, Text } from "react-native";
 import { useState, useEffect, useCallback } from "react";
 import { useFonts } from "expo-font";
 import * as SplashScreen from "expo-splash-screen";
-import axios from "axios";
 import { ms } from "react-native-size-matters";
 
 import {
@@ -12,6 +11,7 @@ import {
   getJalaliToday,
   getHijriToday,
 } from "@/utils/dates";
+import checkJalaliHolidayAsync from "@/utils/checkHoliday";
 import { version } from "package.json";
 
 import Date from "@/components/Date";
@@ -40,14 +40,12 @@ const App = () => {
       setJalaliToday(getJalaliToday().verbose);
       setHijriToday(getHijriToday());
 
-      // Send request to check if today is a Jalali holiday
+      // Handle Jalali holiday
       try {
-        const response = await axios.get(
-          `https://holidayapi.ir/jalali/${getJalaliToday().brief}`
-        );
+        const jalaliHoliday = await checkJalaliHolidayAsync();
 
         // Get the holiday event
-        const holidayEvent = response.data?.events.find(
+        const holidayEvent = jalaliHoliday?.events.find(
           (event: any) => event?.is_holiday
         );
 
@@ -59,7 +57,7 @@ const App = () => {
         }
 
         // Set is holiday state based on response
-        if (response.data?.is_holiday) {
+        if (jalaliHoliday?.is_holiday) {
           setIsHoliday(true);
         } else {
           setIsHoliday(false);
