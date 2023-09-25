@@ -4,6 +4,7 @@ import { StyleSheet, ImageBackground, Text } from "react-native";
 import { useState, useEffect, useCallback } from "react";
 import { useFonts } from "expo-font";
 import * as SplashScreen from "expo-splash-screen";
+import { requestWidgetUpdate } from "react-native-android-widget";
 import { ms } from "react-native-size-matters";
 
 import {
@@ -15,6 +16,7 @@ import checkJalaliHolidayAsync from "@/utils/checkHoliday";
 import { version } from "package.json";
 
 import Date from "@/components/Date";
+import DateWidget from "@/components/DateWidget";
 
 // Keep the splash screen visible until resources are fetched
 SplashScreen.preventAutoHideAsync();
@@ -71,6 +73,14 @@ const App = () => {
 
     prepare();
   }, []);
+
+  // Request widget update after the app is opened to check if today's a holiday
+  useEffect(() => {
+    requestWidgetUpdate({
+      widgetName: "Date",
+      renderWidget: () => <DateWidget isHoliday={isHoliday} />,
+    });
+  }, [isHoliday]);
 
   // Hide the splash screen after the root view has already performed layout
   const onLayoutRootView = useCallback(async () => {

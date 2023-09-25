@@ -3,7 +3,9 @@ import { ms, vs } from "react-native-size-matters";
 
 import { getJalaliToday } from "@/utils/dates";
 
-const DateWidget = () => (
+import type { DateWidgetProps } from "@/global/types";
+
+const DateWidget = ({ isHoliday }: DateWidgetProps) => (
   <FlexWidget
     clickAction="OPEN_APP"
     style={{
@@ -12,7 +14,7 @@ const DateWidget = () => (
       justifyContent: "center",
       alignItems: "center",
       backgroundGradient: {
-        from: "rgba(1, 158, 255, 0.8)",
+        from: isHoliday ? "rgba(255, 0, 0, 0.8)" : "rgba(1, 158, 255, 0.8)",
         to: "rgba(63, 38, 172, 0.8)",
         orientation: "LEFT_RIGHT",
       },

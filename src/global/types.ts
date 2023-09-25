@@ -25,6 +25,13 @@ export interface DateProps {
   holidayDesc: string;
 }
 
+export interface DateWidgetProps {
+  /**
+   * Whether today is a Jalali holiday or not.
+   */
+  isHoliday?: boolean;
+}
+
 export interface GetJalaliTodayArgs {
   /**
    * Today in Jalali calendar with a yyyy/mm/dd format.
