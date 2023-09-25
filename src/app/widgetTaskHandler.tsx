@@ -1,5 +1,7 @@
 import type { WidgetTaskHandlerProps } from "react-native-android-widget";
 
+import checkJalaliHolidayAsync from "@/utils/checkHoliday";
+
 import DateWidget from "@/components/DateWidget";
 
 const nameToWidget = {
@@ -12,13 +14,13 @@ const widgetTaskHandler = async (props: WidgetTaskHandlerProps) => {
   const Widget =
     nameToWidget[widgetInfo.widgetName as keyof typeof nameToWidget];
 
+  // Check if today is a Jalali holiday
+  const jalaliHoliday = await checkJalaliHolidayAsync();
+
   switch (props.widgetAction) {
     case "WIDGET_ADDED":
-      props.renderWidget(<Widget />);
-      break;
-
     case "WIDGET_UPDATE":
-      props.renderWidget(<Widget />);
+      props.renderWidget(<Widget isHoliday={jalaliHoliday?.is_holiday} />);
       break;
 
     case "WIDGET_RESIZED":
