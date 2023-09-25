@@ -14,7 +14,10 @@ const Date = ({
 }: DateProps) => (
   <LinearGradient
     style={styles.container}
-    colors={["rgba(1, 158, 255, 0.9)", "rgba(63, 38, 172, 0.9)"]}
+    colors={[
+      isHoliday ? "rgba(200, 0, 0, 0.9)" : "rgba(1, 158, 255, 0.9)",
+      "rgba(63, 38, 172, 0.9)",
+    ]}
   >
     <MotiView
       from={{ opacity: 0, translateX: -ms(50) }}
@@ -35,7 +38,11 @@ const Date = ({
         <Text
           style={[
             styles.jalaliDateTxt,
-            { backgroundColor: isHoliday ? "red" : "rgb(0, 200, 255)" },
+            {
+              backgroundColor: isHoliday
+                ? "rgb(255, 0, 0)"
+                : "rgb(0, 200, 255)",
+            },
           ]}
         >
           {jalaliToday}
