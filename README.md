@@ -42,9 +42,9 @@ $ npx expo start --dev-client
 - Use the app's widget to get today's Jalali date right from your Home screen
 
 ## Screenshots
-<img src="https://github.com/n-ii-ma/Chandome/assets/88039431/150b4b5b-db6c-4a4b-aa38-17f8f8a8b6a4.png" width="275" />
-<img src="https://github.com/n-ii-ma/Chandome/assets/88039431/1fc9e17a-4ef8-4c51-bd24-f0a7ed5b08b2.png" width="275" />
-<img src="https://github.com/n-ii-ma/Chandome/assets/88039431/d197192f-afa5-46d8-9ec6-e53b7c7010f5.png" width="275" />
+<img src="https://github.com/n-ii-ma/Chandome/assets/88039431/150b4b5b-db6c-4a4b-aa38-17f8f8a8b6a4.png" width="250" />
+<img src="https://github.com/n-ii-ma/Chandome/assets/88039431/1fc9e17a-4ef8-4c51-bd24-f0a7ed5b08b2.png" width="250" />
+<img src="https://github.com/n-ii-ma/Chandome/assets/88039431/d197192f-afa5-46d8-9ec6-e53b7c7010f5.png" width="250" />
 
 ## License
 Distributed under the [MIT](https://opensource.org/licenses/MIT) License.
