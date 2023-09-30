@@ -12,7 +12,7 @@ import {
   getJalaliToday,
   getHijriToday,
 } from "@/utils/dates";
-import checkJalaliHolidayAsync from "@/utils/checkHoliday";
+import getHolidayDataAsync from "@/utils/checkHoliday";
 import { version } from "package.json";
 
 import Date from "@/components/Date";
@@ -44,7 +44,7 @@ const App = () => {
 
       // Handle Jalali holiday
       try {
-        const jalaliHoliday = await checkJalaliHolidayAsync();
+        const jalaliHoliday = await getHolidayDataAsync();
 
         // Get the holiday event
         const holidayEvent = jalaliHoliday?.events.find(

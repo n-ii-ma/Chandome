@@ -1,6 +1,6 @@
 import type { WidgetTaskHandlerProps } from "react-native-android-widget";
 
-import checkJalaliHolidayAsync from "@/utils/checkHoliday";
+import getHolidayDataAsync from "@/utils/checkHoliday";
 
 import DateWidget from "@/components/DateWidget";
 
@@ -20,7 +20,7 @@ const widgetTaskHandler = async (props: WidgetTaskHandlerProps) => {
     props.widgetAction === "WIDGET_UPDATE"
   ) {
     // Check if today is a Jalali holiday
-    const jalaliHoliday = await checkJalaliHolidayAsync();
+    const jalaliHoliday = await getHolidayDataAsync();
 
     props.renderWidget(<Widget isHoliday={jalaliHoliday?.is_holiday} />);
   }
