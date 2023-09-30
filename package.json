@@ -27,7 +27,7 @@
     "expo-linear-gradient": "~12.3.0",
     "expo-splash-screen": "^0.20.5",
     "expo-status-bar": "~1.6.0",
-    "expo-updates": "^0.18.13",
+    "expo-updates": "~0.18.14",
     "moment": "^2.29.4",
     "moment-hijri": "^2.1.2",
     "moti": "^0.26.0",
