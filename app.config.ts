@@ -32,7 +32,7 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
   description:
     "An App which Gives Today's Date in Gregorian, Jalali, and Hijri",
   slug: "Chandome",
-  version: "6.0.0",
+  version: "7.0.0",
   orientation: "portrait",
   icon: "./assets/icons/icon.png",
   userInterfaceStyle: "light",
@@ -56,7 +56,7 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
       monochromeImage: "./assets/icons/icon_monochrome.png",
     },
     package: "com.nima96.Chandome",
-    versionCode: 6,
+    versionCode: 7,
   },
   web: {
     favicon: "./assets/icons/favicon.png",
