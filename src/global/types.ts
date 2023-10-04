@@ -29,7 +29,7 @@ export interface DateWidgetProps {
   /**
    * Whether today is a Jalali holiday or not.
    */
-  isHoliday?: boolean;
+  isHoliday: boolean;
 }
 
 export interface GetJalaliTodayArgs {

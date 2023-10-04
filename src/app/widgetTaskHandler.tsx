@@ -14,19 +14,18 @@ const widgetTaskHandler = async (props: WidgetTaskHandlerProps) => {
   const Widget =
     nameToWidget[widgetInfo.widgetName as keyof typeof nameToWidget];
 
-  // Widget added or updated actions
+  // Widget added, updated or resized actions
   if (
     props.widgetAction === "WIDGET_ADDED" ||
-    props.widgetAction === "WIDGET_UPDATE"
+    props.widgetAction === "WIDGET_UPDATE" ||
+    props.widgetAction === "WIDGET_RESIZED"
   ) {
     // Check if today is a Jalali holiday
     const jalaliHoliday = await getHolidayDataAsync();
 
+    // Render widget
     props.renderWidget(<Widget isHoliday={jalaliHoliday?.is_holiday} />);
   }
-
-  // Widget resized action
-  if (props.widgetAction === "WIDGET_RESIZED") props.renderWidget(<Widget />);
 };
 
 export default widgetTaskHandler;
