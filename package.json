@@ -36,14 +36,14 @@
     "react-native": "0.72.5",
     "react-native-android-widget": "^0.8.1",
     "react-native-reanimated": "~3.3.0",
-    "react-native-size-matters": "^0.4.1",
+    "react-native-size-matters": "^0.4.2",
     "typescript": "^5.2.2"
   },
   "devDependencies": {
     "@babel/core": "^7.23.0",
     "@types/moment-hijri": "^2.1.1",
-    "@typescript-eslint/eslint-plugin": "^6.7.3",
-    "@typescript-eslint/parser": "^6.7.3",
+    "@typescript-eslint/eslint-plugin": "^6.7.4",
+    "@typescript-eslint/parser": "^6.7.4",
     "eslint": "^8.50.0",
     "eslint-plugin-react": "^7.33.2",
     "eslint-plugin-react-hooks": "^4.6.0"
