@@ -17,8 +17,8 @@ import { version } from "package.json";
 import Date from "@/components/Date";
 import DateWidget from "@/components/DateWidget";
 
-// Keep the splash screen visible until resources are fetched
-SplashScreen.preventAutoHideAsync();
+SplashScreen.preventAutoHideAsync(); // Keep the splash screen visible until resources are fetched
+SplashScreen.setOptions({ fade: true });
 
 const App = () => {
   const [gregorianToday, setGregorianToday] = useState(""); // Today in Gregorian
@@ -77,10 +77,8 @@ const App = () => {
   }, [isHoliday]);
 
   // Hide the splash screen after the root view has already performed layout
-  const onLayoutRootView = useCallback(async () => {
-    if (appIsReady) {
-      await SplashScreen.hideAsync();
-    }
+  const onLayoutRootView = useCallback(() => {
+    if (appIsReady) SplashScreen.hide();
   }, [appIsReady]);
 
   // Return null if app is not ready to render

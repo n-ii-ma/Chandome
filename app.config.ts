@@ -40,14 +40,18 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
   plugins: [
     ["react-native-android-widget", widgetConfig],
     ["expo-font", { fonts: ["./assets/fonts/Vazirmatn-Regular.ttf"] }],
+    [
+      "expo-splash-screen",
+      {
+        image: "./assets/icons/icon.png",
+        resizeMode: "contain",
+        backgroundColor: "#000000",
+        imageWidth: 200,
+      },
+    ],
   ],
   experiments: {
     tsconfigPaths: true,
-  },
-  splash: {
-    image: "./assets/images/splash.png",
-    resizeMode: "contain",
-    backgroundColor: "#000000",
   },
   assetBundlePatterns: ["**/*"],
   ios: {
