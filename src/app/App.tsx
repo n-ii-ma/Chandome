@@ -2,7 +2,6 @@ import "react-native-reanimated";
 import { StatusBar } from "expo-status-bar";
 import { StyleSheet, ImageBackground, Text } from "react-native";
 import { useState, useEffect, useCallback } from "react";
-import { useFonts } from "expo-font";
 import * as SplashScreen from "expo-splash-screen";
 import { requestWidgetUpdate } from "react-native-android-widget";
 import { ms } from "react-native-size-matters";
@@ -29,11 +28,6 @@ const App = () => {
   const [holidayDesc, setHolidayDesc] = useState(""); // Holiday description
   const [appIsReady, setAppIsReady] = useState(false); // Is app ready to render
 
-  // Load Fonts
-  const [fontsLoaded] = useFonts({
-    "Vazirmatn-Regular": require("../../assets/fonts/Vazirmatn-Regular.ttf"),
-  });
-
   // Load data
   useEffect(() => {
     async function prepare() {
@@ -48,7 +42,7 @@ const App = () => {
 
         // Get the holiday event
         const holidayEvent = jalaliHoliday?.events.find(
-          (event: any) => event?.is_holiday
+          (event: any) => event?.is_holiday,
         );
 
         // Set the holiday's description
@@ -84,10 +78,10 @@ const App = () => {
 
   // Hide the splash screen after the root view has already performed layout
   const onLayoutRootView = useCallback(async () => {
-    if (appIsReady && fontsLoaded) {
+    if (appIsReady) {
       await SplashScreen.hideAsync();
     }
-  }, [appIsReady, fontsLoaded]);
+  }, [appIsReady]);
 
   // Return null if app is not ready to render
   if (!appIsReady) {

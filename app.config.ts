@@ -37,7 +37,10 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
   orientation: "portrait",
   icon: "./assets/icons/icon.png",
   userInterfaceStyle: "light",
-  plugins: [["react-native-android-widget", widgetConfig], ["expo-font"]],
+  plugins: [
+    ["react-native-android-widget", widgetConfig],
+    ["expo-font", { fonts: ["./assets/fonts/Vazirmatn-Regular.ttf"] }],
+  ],
   experiments: {
     tsconfigPaths: true,
   },
