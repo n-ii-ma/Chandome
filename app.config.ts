@@ -8,14 +8,15 @@ const widgetConfig: WithAndroidWidgetsParams = {
     {
       name: "Date", // This name will be the **name** with which we will reference our widget.
       label: "امروز چندمه؟", // Label shown in the widget picker
-      // Min 3 x 1 cells (70 × n − 30) **n is number of cells**
-      minWidth: `${70 * 3 - 30}dp`,
+      // Min 5 x 1 cells (70 × n − 30) **n is number of cells**
+      minWidth: `${70 * 5 - 30}dp`,
       minHeight: `${70 * 1 - 30}dp`,
+      targetCellWidth: 5,
+      targetCellHeight: 1,
+      maxResizeWidth: `${70 * 5 - 30}dp`, // Max 5 x 1 cells
+      resizeMode: "horizontal",
       description: "Get Today's Date in Jalali Calendar", // Description shown in the widget picker
       previewImage: "./assets/images/date_widget_preview.png", // Path to widget preview image
-      resizeMode: "horizontal",
-      // Max 5 x 1 cells
-      maxResizeWidth: `${70 * 5 - 30}dp`,
 
       // How often, in milliseconds, that this AppWidget wants to be updated.
       // The task handler will be called with widgetAction = 'UPDATE_WIDGET'.
