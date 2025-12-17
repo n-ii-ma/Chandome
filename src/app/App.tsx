@@ -3,6 +3,7 @@ import { StatusBar } from "expo-status-bar";
 import { StyleSheet, ImageBackground, Text } from "react-native";
 import { useState, useEffect, useCallback } from "react";
 import * as SplashScreen from "expo-splash-screen";
+import * as Application from "expo-application";
 import { requestWidgetUpdate } from "react-native-android-widget";
 import { ms } from "react-native-size-matters";
 
@@ -12,7 +13,6 @@ import {
   getHijriToday,
 } from "@/utils/dates";
 import getHolidayDataAsync from "@/utils/checkHoliday";
-import { version } from "package.json";
 
 import Date from "@/components/Date";
 import DateWidget from "@/components/DateWidget";
@@ -101,7 +101,9 @@ const App = () => {
         isHoliday={isHoliday}
         holidayDesc={holidayDesc}
       />
-      <Text style={styles.versionTxt}>v{version}</Text>
+      <Text style={styles.versionTxt}>
+        v{Application.nativeApplicationVersion}
+      </Text>
       <StatusBar style="light" />
     </ImageBackground>
   );
