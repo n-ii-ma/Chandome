@@ -4,6 +4,7 @@ import { StyleSheet, ScrollView, RefreshControl } from "react-native";
 import { useState, useEffect, useCallback } from "react";
 import * as SplashScreen from "expo-splash-screen";
 import { requestWidgetUpdate } from "react-native-android-widget";
+import { SafeAreaProvider } from "react-native-safe-area-context";
 
 import getHolidayDataAsync from "@/utils/checkHoliday";
 import { useRefresh } from "@/hooks/useRefresh";
@@ -74,16 +75,17 @@ const App = () => {
   }
 
   return (
-    <ScrollView
-      onLayout={onLayoutRootView}
-      refreshControl={
-        <RefreshControl refreshing={isRefreshing} onRefresh={handleRefresh} />
-      }
-      contentContainerStyle={styles.contentContainer}
-    >
-      <Background isHoliday={isHoliday} holidayDesc={holidayDesc} />
-      <StatusBar style="light" />
-    </ScrollView>
+    <SafeAreaProvider onLayout={onLayoutRootView}>
+      <ScrollView
+        refreshControl={
+          <RefreshControl refreshing={isRefreshing} onRefresh={handleRefresh} />
+        }
+        contentContainerStyle={styles.contentContainer}
+      >
+        <Background isHoliday={isHoliday} holidayDesc={holidayDesc} />
+        <StatusBar style="light" />
+      </ScrollView>
+    </SafeAreaProvider>
   );
 };
 
