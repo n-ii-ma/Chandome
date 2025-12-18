@@ -3,27 +3,27 @@ import axios from "axios";
 
 import { getJalaliToday } from "./dates";
 
-// Send request to check if today is a Jalali holiday
+const STORAGE_KEY = "@Holiday";
+
+/** Callback to send request to check if today is a Jalali holiday */
 const checkJalaliHolidayAsync = async () => {
   try {
     const response = await axios.get(
-      `https://holidayapi.ir/jalali/${getJalaliToday().brief}`
+      `https://holidayapi.ir/jalali/${getJalaliToday().brief}`,
+      { timeout: 3000 },
     );
-
-    // Save response in Async Storage
     const jsonHoliday = JSON.stringify(response.data);
-    await AsyncStorage.setItem("@Holiday", jsonHoliday);
+
+    await AsyncStorage.setItem(STORAGE_KEY, jsonHoliday);
   } catch (error) {}
 };
 
-// Get holiday data from Async Storage
+/** Callback to get holiday data from Async Storage */
 const getHolidayDataAsync = async () => {
   try {
-    // Send request to check for Jalali holiday
     await checkJalaliHolidayAsync();
 
-    // Read holiday data from Async Storage
-    const jsonHoliday = await AsyncStorage.getItem("@Holiday");
+    const jsonHoliday = await AsyncStorage.getItem(STORAGE_KEY);
     return jsonHoliday !== null ? JSON.parse(jsonHoliday) : null;
   } catch (error) {}
 };
