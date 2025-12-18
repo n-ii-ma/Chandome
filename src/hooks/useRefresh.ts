@@ -1,9 +1,9 @@
-import { useState, useCallback } from "react";
+import { useState } from "react";
 
 export const useRefresh = (refetch: () => Promise<void>) => {
   const [isRefreshing, setIsRefreshing] = useState(false);
 
-  const handleRefresh = useCallback(async () => {
+  const handleRefresh = async () => {
     try {
       setIsRefreshing(true);
       await refetch();
@@ -11,7 +11,7 @@ export const useRefresh = (refetch: () => Promise<void>) => {
     } finally {
       setIsRefreshing(false);
     }
-  }, [refetch]);
+  };
 
   return { isRefreshing, handleRefresh };
 };

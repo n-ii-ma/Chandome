@@ -1,7 +1,7 @@
 import "react-native-reanimated";
 import { StatusBar } from "expo-status-bar";
 import { StyleSheet, ScrollView, RefreshControl } from "react-native";
-import { useState, useEffect, useCallback } from "react";
+import { useState, useEffect } from "react";
 import * as SplashScreen from "expo-splash-screen";
 import { requestWidgetUpdate } from "react-native-android-widget";
 import { SafeAreaProvider } from "react-native-safe-area-context";
@@ -66,9 +66,9 @@ const App = () => {
 
   const { isRefreshing, handleRefresh } = useRefresh(getDates);
 
-  const onLayoutRootView = useCallback(() => {
+  const onLayoutRootView = () => {
     if (appIsReady) SplashScreen.hide();
-  }, [appIsReady]);
+  };
 
   if (!appIsReady) {
     return null;
