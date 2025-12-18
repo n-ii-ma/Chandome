@@ -58,7 +58,6 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
       monochromeImage: "./assets/icons/icon_monochrome.png",
     },
     package: "com.nima96.Chandome",
-    versionCode: 8,
     edgeToEdgeEnabled: true,
   },
   web: {
