@@ -7,11 +7,6 @@ import * as Application from "expo-application";
 import { requestWidgetUpdate } from "react-native-android-widget";
 import { ms } from "react-native-size-matters";
 
-import {
-  getGregorianToday,
-  getJalaliToday,
-  getHijriToday,
-} from "@/utils/dates";
 import getHolidayDataAsync from "@/utils/checkHoliday";
 
 import Date from "@/components/Date";
@@ -21,9 +16,6 @@ SplashScreen.preventAutoHideAsync(); // Keep the splash screen visible until res
 SplashScreen.setOptions({ fade: true });
 
 const App = () => {
-  const [gregorianToday, setGregorianToday] = useState(""); // Today in Gregorian
-  const [jalaliToday, setJalaliToday] = useState(""); // Today in Jalali
-  const [hijriToday, setHijriToday] = useState(""); // Today in Hijri
   const [isHoliday, setIsHoliday] = useState(false); // Is today a holiday
   const [holidayDesc, setHolidayDesc] = useState(""); // Holiday description
   const [appIsReady, setAppIsReady] = useState(false); // Is app ready to render
@@ -31,11 +23,6 @@ const App = () => {
   // Load data
   useEffect(() => {
     async function prepare() {
-      // Load dates
-      setGregorianToday(getGregorianToday());
-      setJalaliToday(getJalaliToday().verbose);
-      setHijriToday(getHijriToday());
-
       // Handle Jalali holiday
       try {
         const jalaliHoliday = await getHolidayDataAsync();
@@ -94,13 +81,7 @@ const App = () => {
       alt="Black sand dunes"
       onLayout={onLayoutRootView}
     >
-      <Date
-        gregorianToday={gregorianToday}
-        jalaliToday={jalaliToday}
-        hijriToday={hijriToday}
-        isHoliday={isHoliday}
-        holidayDesc={holidayDesc}
-      />
+      <Date isHoliday={isHoliday} holidayDesc={holidayDesc} />
       <Text style={styles.versionTxt}>
         v{Application.nativeApplicationVersion}
       </Text>

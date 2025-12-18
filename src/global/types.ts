@@ -1,20 +1,5 @@
 export interface DateProps {
   /**
-   * Today's date in Gregorian calendar.
-   */
-  gregorianToday: string;
-
-  /**
-   * Today's date in Jalali calendar.
-   */
-  jalaliToday: string;
-
-  /**
-   * Today's date in Hijri calendar.
-   */
-  hijriToday: string;
-
-  /**
    * Whether today is a Jalali holiday or not.
    */
   isHoliday: boolean;
