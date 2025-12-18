@@ -2,25 +2,19 @@ import type { ConfigContext, ExpoConfig } from "expo/config";
 import type { WithAndroidWidgetsParams } from "react-native-android-widget";
 
 const widgetConfig: WithAndroidWidgetsParams = {
-  // Paths to all custom fonts used in all widgets
   fonts: ["./assets/fonts/Vazirmatn-Regular.ttf"],
   widgets: [
     {
-      name: "Date", // This name will be the **name** with which we will reference our widget.
-      label: "امروز چندمه؟", // Label shown in the widget picker
-      // Min 3 x 1 cells (70 × n − 30) **n is number of cells**
-      minWidth: `${70 * 3 - 30}dp`,
-      minHeight: `${70 * 1 - 30}dp`,
-      description: "Get Today's Date in Jalali Calendar", // Description shown in the widget picker
-      previewImage: "./assets/images/date_widget_preview.png", // Path to widget preview image
+      name: "Date",
+      label: "امروز چندمه؟",
+      // (70 × n − 30) **n is number of cells**
+      minWidth: `${70 * 3 - 30}dp`, // Min 3 cells
+      minHeight: `${70 * 1 - 30}dp`, // Min 1 cell
+      targetCellWidth: 5,
+      targetCellHeight: 1,
       resizeMode: "horizontal",
-      // Max 5 x 1 cells
-      maxResizeWidth: `${70 * 5 - 30}dp`,
-
-      // How often, in milliseconds, that this AppWidget wants to be updated.
-      // The task handler will be called with widgetAction = 'UPDATE_WIDGET'.
-      // Default is 0 (no automatic updates)
-      // Minimum is 1800000 (30 minutes == 30 * 60 * 1000).
+      description: "Get Today's Date in Jalali Calendar",
+      previewImage: "./assets/images/date_widget_preview.png",
       updatePeriodMillis: 5400000, // 90 minutes
     },
   ],
@@ -32,18 +26,27 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
   description:
     "An App which Gives Today's Date in Gregorian, Jalali, and Hijri",
   slug: "Chandome",
-  version: "7.0.0",
+  version: "8.0.0",
   orientation: "portrait",
   icon: "./assets/icons/icon.png",
   userInterfaceStyle: "light",
-  plugins: [["react-native-android-widget", widgetConfig]],
+  plugins: [
+    ["react-native-android-widget", widgetConfig],
+    ["expo-font", { fonts: ["./assets/fonts/Vazirmatn-Regular.ttf"] }],
+    [
+      "expo-splash-screen",
+      {
+        image: "./assets/icons/icon.png",
+        resizeMode: "contain",
+        backgroundColor: "#000000",
+        imageWidth: 200,
+      },
+    ],
+  ],
+  newArchEnabled: true,
   experiments: {
     tsconfigPaths: true,
-  },
-  splash: {
-    image: "./assets/images/splash.png",
-    resizeMode: "contain",
-    backgroundColor: "#000000",
+    reactCompiler: true,
   },
   assetBundlePatterns: ["**/*"],
   ios: {
@@ -56,7 +59,7 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
       monochromeImage: "./assets/icons/icon_monochrome.png",
     },
     package: "com.nima96.Chandome",
-    versionCode: 7,
+    edgeToEdgeEnabled: true,
   },
   web: {
     favicon: "./assets/icons/favicon.png",

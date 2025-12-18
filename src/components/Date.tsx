@@ -3,15 +3,15 @@ import { LinearGradient } from "expo-linear-gradient";
 import { MotiView } from "moti";
 import { ms, vs } from "react-native-size-matters";
 
+import {
+  getGregorianToday,
+  getJalaliToday,
+  getHijriToday,
+} from "@/utils/dates";
+
 import type { DateProps } from "@/global/types";
 
-const Date = ({
-  gregorianToday,
-  jalaliToday,
-  hijriToday,
-  isHoliday,
-  holidayDesc,
-}: DateProps) => (
+const Date = ({ isHoliday, holidayDesc }: DateProps) => (
   <LinearGradient
     style={styles.container}
     colors={[
@@ -26,7 +26,7 @@ const Date = ({
       style={{ width: "100%" }}
     >
       <Text style={[styles.otherDateTxt, { alignSelf: "flex-start" }]}>
-        {gregorianToday}
+        {getGregorianToday()}
       </Text>
     </MotiView>
     <View style={styles.jalaliContainer}>
@@ -45,7 +45,7 @@ const Date = ({
             },
           ]}
         >
-          {jalaliToday}
+          {getJalaliToday().verbose}
         </Text>
       </MotiView>
       {holidayDesc && (
@@ -68,7 +68,7 @@ const Date = ({
       style={{ width: "100%" }}
     >
       <Text style={[styles.otherDateTxt, { alignSelf: "flex-end" }]}>
-        {hijriToday}
+        {getHijriToday()}
       </Text>
     </MotiView>
   </LinearGradient>
