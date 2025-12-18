@@ -18,9 +18,9 @@ Built with Expo in TypeScript, this app gives today's date in Gregorian, Jalali,
 
 ## Technologies
 Project is created with:
-+ Expo v49
-+ React Native v0.72
-+ React v18
++ Expo v53
++ React Native v0.79
++ React v19
 + TypeScript v5
 + React Native Reanimated v3
 
