@@ -6,7 +6,7 @@ export interface DateProps {
   holidayDesc: string;
 }
 
-export interface BackgroundProps extends DateProps {}
+export type BackgroundProps = DateProps;
 
 export interface DateWidgetProps {
   /** Whether today is a Jalali holiday or not. */
