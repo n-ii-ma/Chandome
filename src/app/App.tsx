@@ -1,53 +1,53 @@
 import "react-native-reanimated";
 import { StatusBar } from "expo-status-bar";
-import { StyleSheet, ImageBackground, Text } from "react-native";
+import { StyleSheet, ScrollView, RefreshControl } from "react-native";
 import { useState, useEffect, useCallback } from "react";
 import * as SplashScreen from "expo-splash-screen";
-import * as Application from "expo-application";
 import { requestWidgetUpdate } from "react-native-android-widget";
-import { ms } from "react-native-size-matters";
 
 import getHolidayDataAsync from "@/utils/checkHoliday";
+import { useRefresh } from "@/hooks/useRefresh";
 
-import Date from "@/components/Date";
+import Background from "@/components/Background";
 import DateWidget from "@/components/DateWidget";
 
-SplashScreen.preventAutoHideAsync(); // Keep the splash screen visible until resources are fetched
+SplashScreen.preventAutoHideAsync();
 SplashScreen.setOptions({ fade: true });
 
 const App = () => {
-  const [isHoliday, setIsHoliday] = useState(false); // Is today a holiday
-  const [holidayDesc, setHolidayDesc] = useState(""); // Holiday description
-  const [appIsReady, setAppIsReady] = useState(false); // Is app ready to render
+  const [isHoliday, setIsHoliday] = useState(false);
+  const [holidayDesc, setHolidayDesc] = useState("");
+  const [appIsReady, setAppIsReady] = useState(false);
 
-  // Load data
+  const getDates = async () => {
+    try {
+      const jalaliHoliday = await getHolidayDataAsync();
+
+      // Get the holiday event
+      const holidayEvent = jalaliHoliday?.events.find(
+        (event: any) => event?.is_holiday,
+      );
+
+      if (holidayEvent !== undefined) {
+        setHolidayDesc(holidayEvent?.description);
+      } else {
+        setHolidayDesc("");
+      }
+
+      if (jalaliHoliday?.is_holiday) {
+        setIsHoliday(true);
+      } else {
+        setIsHoliday(false);
+      }
+    } catch (error) {}
+  };
+
   useEffect(() => {
     async function prepare() {
-      // Handle Jalali holiday
       try {
-        const jalaliHoliday = await getHolidayDataAsync();
-
-        // Get the holiday event
-        const holidayEvent = jalaliHoliday?.events.find(
-          (event: any) => event?.is_holiday,
-        );
-
-        // Set the holiday's description
-        if (holidayEvent !== undefined) {
-          setHolidayDesc(holidayEvent?.description);
-        } else {
-          setHolidayDesc("");
-        }
-
-        // Set is holiday state based on response
-        if (jalaliHoliday?.is_holiday) {
-          setIsHoliday(true);
-        } else {
-          setIsHoliday(false);
-        }
+        await getDates();
       } catch (error) {
       } finally {
-        // Tell the application to render
         setAppIsReady(true);
       }
     }
@@ -63,46 +63,34 @@ const App = () => {
     });
   }, [isHoliday]);
 
-  // Hide the splash screen after the root view has already performed layout
+  const { isRefreshing, handleRefresh } = useRefresh(getDates);
+
   const onLayoutRootView = useCallback(() => {
     if (appIsReady) SplashScreen.hide();
   }, [appIsReady]);
 
-  // Return null if app is not ready to render
   if (!appIsReady) {
     return null;
   }
 
   return (
-    <ImageBackground
-      source={require("../../assets/images/black_sand_dunes.jpg")}
-      style={styles.container}
-      resizeMode="cover"
-      alt="Black sand dunes"
+    <ScrollView
       onLayout={onLayoutRootView}
+      refreshControl={
+        <RefreshControl refreshing={isRefreshing} onRefresh={handleRefresh} />
+      }
+      contentContainerStyle={styles.contentContainer}
     >
-      <Date isHoliday={isHoliday} holidayDesc={holidayDesc} />
-      <Text style={styles.versionTxt}>
-        v{Application.nativeApplicationVersion}
-      </Text>
+      <Background isHoliday={isHoliday} holidayDesc={holidayDesc} />
       <StatusBar style="light" />
-    </ImageBackground>
+    </ScrollView>
   );
 };
 
 export default App;
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    alignItems: "center",
-    justifyContent: "center",
-  },
-  versionTxt: {
-    fontFamily: "Vazirmatn-Regular",
-    fontSize: ms(10),
-    color: "grey",
-    position: "absolute",
-    bottom: 0,
+  contentContainer: {
+    flexGrow: 1,
   },
 });
