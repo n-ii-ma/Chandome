@@ -19,7 +19,6 @@
   },
   "dependencies": {
     "@react-native-async-storage/async-storage": "2.1.2",
-    "@types/react": "~19.0.10",
     "axios": "^1.13.2",
     "date-fns-jalali": "^4.1.0-0",
     "expo": "~53.0.25",
@@ -38,17 +37,15 @@
     "react-native-android-widget": "^0.17.2",
     "react-native-reanimated": "~3.17.4",
     "react-native-safe-area-context": "5.4.0",
-    "react-native-size-matters": "^0.4.2",
-    "typescript": "~5.8.3"
+    "react-native-size-matters": "^0.4.2"
   },
   "devDependencies": {
     "@babel/core": "^7.28.5",
     "@types/moment-hijri": "^2.1.4",
-    "@typescript-eslint/eslint-plugin": "^6.21.0",
-    "@typescript-eslint/parser": "^6.21.0",
-    "eslint": "^8.57.1",
-    "eslint-plugin-react": "^7.37.5",
-    "eslint-plugin-react-hooks": "^4.6.2"
+    "@types/react": "~19.0.10",
+    "eslint": "^9.0.0",
+    "eslint-config-expo": "~9.2.0",
+    "typescript": "~5.8.3"
   },
   "private": true
 }
