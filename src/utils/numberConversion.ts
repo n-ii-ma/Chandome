@@ -1,6 +1,4 @@
-/** Convert numbers to Farsi. */
 export default function convertToFarsi(str: string): string {
-  // Type *Index Signature*
   const farsiDigits: { [index: string]: any } = [
     "۰",
     "۱",

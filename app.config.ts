@@ -2,25 +2,19 @@ import type { ConfigContext, ExpoConfig } from "expo/config";
 import type { WithAndroidWidgetsParams } from "react-native-android-widget";
 
 const widgetConfig: WithAndroidWidgetsParams = {
-  // Paths to all custom fonts used in all widgets
   fonts: ["./assets/fonts/Vazirmatn-Regular.ttf"],
   widgets: [
     {
-      name: "Date", // This name will be the **name** with which we will reference our widget.
-      label: "امروز چندمه؟", // Label shown in the widget picker
+      name: "Date",
+      label: "امروز چندمه؟",
       // (70 × n − 30) **n is number of cells**
       minWidth: `${70 * 3 - 30}dp`, // Min 3 cells
       minHeight: `${70 * 1 - 30}dp`, // Min 1 cell
       targetCellWidth: 5,
       targetCellHeight: 1,
       resizeMode: "horizontal",
-      description: "Get Today's Date in Jalali Calendar", // Description shown in the widget picker
-      previewImage: "./assets/images/date_widget_preview.png", // Path to widget preview image
-
-      // How often, in milliseconds, that this AppWidget wants to be updated.
-      // The task handler will be called with widgetAction = 'UPDATE_WIDGET'.
-      // Default is 0 (no automatic updates)
-      // Minimum is 1800000 (30 minutes == 30 * 60 * 1000).
+      description: "Get Today's Date in Jalali Calendar",
+      previewImage: "./assets/images/date_widget_preview.png",
       updatePeriodMillis: 5400000, // 90 minutes
     },
   ],
