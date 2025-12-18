@@ -46,6 +46,7 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
   newArchEnabled: true,
   experiments: {
     tsconfigPaths: true,
+    reactCompiler: true,
   },
   assetBundlePatterns: ["**/*"],
   ios: {
