@@ -64,6 +64,7 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
     },
     package: "com.nima96.Chandome",
     versionCode: 7,
+    edgeToEdgeEnabled: true,
   },
   web: {
     favicon: "./assets/icons/favicon.png",
