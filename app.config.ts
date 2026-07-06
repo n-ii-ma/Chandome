@@ -44,6 +44,7 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
     favicon: "./assets/icons/favicon.png",
   },
   plugins: [
+    "expo-router",
     ["react-native-android-widget", widgetConfig],
     ["expo-font", { fonts: ["./assets/fonts/Vazirmatn-Regular.ttf"] }],
     [

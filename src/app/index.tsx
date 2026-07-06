@@ -1,10 +1,8 @@
 import * as SplashScreen from "expo-splash-screen";
-import { StatusBar } from "expo-status-bar";
 import { useEffect, useState } from "react";
 import { RefreshControl, ScrollView, StyleSheet } from "react-native";
 import { requestWidgetUpdate } from "react-native-android-widget";
 import "react-native-reanimated";
-import { SafeAreaProvider } from "react-native-safe-area-context";
 
 import { useRefresh } from "@/hooks/useRefresh";
 import getHolidayDataAsync from "@/utils/checkHoliday";
@@ -15,7 +13,7 @@ import DateWidget from "@/components/DateWidget";
 SplashScreen.preventAutoHideAsync();
 SplashScreen.setOptions({ fade: true });
 
-const App = () => {
+const Index = () => {
   const [isHoliday, setIsHoliday] = useState(false);
   const [holidayDesc, setHolidayDesc] = useState("");
   const [appIsReady, setAppIsReady] = useState(false);
@@ -75,21 +73,19 @@ const App = () => {
   }
 
   return (
-    <SafeAreaProvider onLayout={onLayoutRootView}>
-      <ScrollView
-        refreshControl={
-          <RefreshControl refreshing={isRefreshing} onRefresh={handleRefresh} />
-        }
-        contentContainerStyle={styles.contentContainer}
-      >
-        <Background isHoliday={isHoliday} holidayDesc={holidayDesc} />
-        <StatusBar style="light" />
-      </ScrollView>
-    </SafeAreaProvider>
+    <ScrollView
+      onLayout={onLayoutRootView}
+      refreshControl={
+        <RefreshControl refreshing={isRefreshing} onRefresh={handleRefresh} />
+      }
+      contentContainerStyle={styles.contentContainer}
+    >
+      <Background isHoliday={isHoliday} holidayDesc={holidayDesc} />
+    </ScrollView>
   );
 };
 
-export default App;
+export default Index;
 
 const styles = StyleSheet.create({
   contentContainer: {
