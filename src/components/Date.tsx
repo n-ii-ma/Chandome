@@ -1,12 +1,12 @@
-import { StyleSheet, View, Text } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
 import { MotiView } from "moti";
+import { StyleSheet, Text, View } from "react-native";
 import { ms, vs } from "react-native-size-matters";
 
 import {
   getGregorianToday,
-  getJalaliToday,
   getHijriToday,
+  getJalaliToday,
 } from "@/utils/dates";
 
 import type { DateProps } from "@/global/types";

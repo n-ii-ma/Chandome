@@ -1,13 +1,13 @@
-import "react-native-reanimated";
-import { StatusBar } from "expo-status-bar";
-import { StyleSheet, ScrollView, RefreshControl } from "react-native";
-import { useState, useEffect } from "react";
 import * as SplashScreen from "expo-splash-screen";
+import { StatusBar } from "expo-status-bar";
+import { useEffect, useState } from "react";
+import { RefreshControl, ScrollView, StyleSheet } from "react-native";
 import { requestWidgetUpdate } from "react-native-android-widget";
+import "react-native-reanimated";
 import { SafeAreaProvider } from "react-native-safe-area-context";
 
-import getHolidayDataAsync from "@/utils/checkHoliday";
 import { useRefresh } from "@/hooks/useRefresh";
+import getHolidayDataAsync from "@/utils/checkHoliday";
 
 import Background from "@/components/Background";
 import DateWidget from "@/components/DateWidget";
