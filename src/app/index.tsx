@@ -5,7 +5,7 @@ import { requestWidgetUpdate } from "react-native-android-widget";
 import "react-native-reanimated";
 
 import { useRefresh } from "@/hooks/useRefresh";
-import getHolidayDataAsync from "@/utils/checkHoliday";
+import { getHolidayDataAsync } from "@/utils/checkHoliday";
 
 import Background from "@/components/Background";
 import DateWidget from "@/components/DateWidget";
@@ -19,26 +19,15 @@ const Index = () => {
   const [appIsReady, setAppIsReady] = useState(false);
 
   const getDates = async () => {
-    try {
-      const jalaliHoliday = await getHolidayDataAsync();
+    const jalaliHoliday = await getHolidayDataAsync();
 
-      // Get the holiday event
-      const holidayEvent = jalaliHoliday?.events.find(
-        (event: any) => event?.is_holiday,
-      );
+    // Get the holiday event
+    const holidayEvent = jalaliHoliday?.events?.find(
+      (event: any) => event.is_holiday,
+    );
 
-      if (holidayEvent !== undefined) {
-        setHolidayDesc(holidayEvent?.description);
-      } else {
-        setHolidayDesc("");
-      }
-
-      if (jalaliHoliday?.is_holiday) {
-        setIsHoliday(true);
-      } else {
-        setIsHoliday(false);
-      }
-    } catch (error) {}
+    setHolidayDesc(holidayEvent?.description ?? "");
+    setIsHoliday(jalaliHoliday?.is_holiday ?? false);
   };
 
   useEffect(() => {

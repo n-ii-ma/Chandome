@@ -1,6 +1,6 @@
 import type { WidgetTaskHandlerProps } from "react-native-android-widget";
 
-import getHolidayDataAsync from "@/utils/checkHoliday";
+import { getHolidayDataAsync } from "@/utils/checkHoliday";
 
 import DateWidget from "@/components/DateWidget";
 
