@@ -21,7 +21,6 @@ const Index = () => {
   const getDates = async () => {
     const jalaliHoliday = await getHolidayDataAsync();
 
-    // Get the holiday event
     const holidayEvent = jalaliHoliday?.events?.find(
       (event: any) => event.is_holiday,
     );
