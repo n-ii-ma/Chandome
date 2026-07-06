@@ -5,7 +5,6 @@ import { getJalaliToday } from "./dates";
 
 const STORAGE_KEY = "@Holiday";
 
-/** Callback to send request to check if today is a Jalali holiday */
 const checkJalaliHolidayAsync = async () => {
   const response = await axios.get(
     `https://holidayapi.ir/jalali/${getJalaliToday().brief}`,
@@ -16,7 +15,6 @@ const checkJalaliHolidayAsync = async () => {
   return response.data;
 };
 
-/** Callback to get holiday data */
 export const getHolidayDataAsync = async () => {
   try {
     return await checkJalaliHolidayAsync();

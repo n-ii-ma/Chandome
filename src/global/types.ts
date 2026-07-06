@@ -1,17 +1,11 @@
 export interface DateProps {
-  /** Whether today is a Jalali holiday or not. */
   isHoliday: boolean;
-
-  /** Jalali holiday description. */
   holidayDesc: string;
 }
 
 export type BackgroundProps = DateProps;
 
-export interface DateWidgetProps {
-  /** Whether today is a Jalali holiday or not. */
-  isHoliday: boolean;
-}
+export type DateWidgetProps = Pick<DateProps, "isHoliday">;
 
 export interface GetJalaliTodayArgs {
   /** Today in Jalali calendar with a yyyy/mm/dd format. */
