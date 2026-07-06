@@ -72,4 +72,5 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
   updates: {
     url: "https://u.expo.dev/5f361a7b-3d7f-4708-b9da-04949b38c2dd",
   },
+  owner: "nima96",
 });
