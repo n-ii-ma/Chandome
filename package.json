@@ -48,7 +48,6 @@
     "release-android-local": "eas build --platform android --local",
     "dev-build": "eas build --profile development --platform android",
     "dev-build-local": "eas build --profile development --platform android --local",
-    "dev-server": "expo start --dev-client",
     "expo-doctor": "npx expo-doctor",
     "expo-check": "expo install --check",
     "ts:check": "tsc",
