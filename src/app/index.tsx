@@ -21,7 +21,7 @@ const Index = () => {
       widgetName: "Date",
       renderWidget: () => <DateWidget isHoliday={isHoliday} />,
     });
-  }, []);
+  }, [isHoliday]);
 
   return (
     <View onLayout={() => SplashScreen.hide()} style={styles.container}>
