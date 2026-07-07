@@ -1,3 +1,4 @@
+import { useObserve } from "expo-observe";
 import * as SplashScreen from "expo-splash-screen";
 import { useEffect } from "react";
 import { StyleSheet, View } from "react-native";
@@ -13,6 +14,8 @@ SplashScreen.preventAutoHideAsync();
 SplashScreen.setOptions({ fade: true });
 
 const Index = () => {
+  const { markInteractive } = useObserve();
+
   const { isHoliday, cause } = getHolidayData();
 
   // Request widget update after the app is opened to check if today's a holiday
@@ -23,8 +26,13 @@ const Index = () => {
     });
   }, [isHoliday]);
 
+  const onLayoutRootView = () => {
+    SplashScreen.hide();
+    markInteractive();
+  };
+
   return (
-    <View onLayout={() => SplashScreen.hide()} style={styles.container}>
+    <View onLayout={onLayoutRootView} style={styles.container}>
       <Background isHoliday={isHoliday} holidayDesc={cause} />
     </View>
   );

@@ -1,3 +1,4 @@
+import { ObserveRoot } from "expo-observe";
 import { Stack } from "expo-router";
 import { StatusBar } from "expo-status-bar";
 
@@ -10,4 +11,4 @@ const RootLayout = () => {
   );
 };
 
-export default RootLayout;
+export default ObserveRoot.wrap(RootLayout);
