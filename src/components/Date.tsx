@@ -1,6 +1,11 @@
 import { LinearGradient } from "expo-linear-gradient";
-import { MotiView } from "moti";
 import { StyleSheet, Text, View } from "react-native";
+import Animated, {
+  FadeIn,
+  FadeInLeft,
+  FadeInRight,
+  ZoomIn,
+} from "react-native-reanimated";
 import { ms, vs } from "react-native-size-matters";
 
 import {
@@ -19,22 +24,18 @@ const Date = ({ isHoliday, holidayDesc }: DateProps) => (
       "rgba(63, 38, 172, 0.9)",
     ]}
   >
-    <MotiView
-      from={{ opacity: 0, translateX: -ms(50) }}
-      animate={{ opacity: 1, translateX: 0 }}
-      transition={{ type: "spring" }}
+    <Animated.View
+      entering={FadeInLeft.springify().withInitialValues({
+        translateX: -ms(50),
+      })}
       style={{ width: "100%" }}
     >
       <Text style={[styles.otherDateTxt, { alignSelf: "flex-start" }]}>
         {getGregorianToday()}
       </Text>
-    </MotiView>
+    </Animated.View>
     <View style={styles.jalaliContainer}>
-      <MotiView
-        from={{ opacity: 0, scale: 0 }}
-        animate={{ opacity: 1, scale: 1 }}
-        style={{ width: "100%" }}
-      >
+      <Animated.View entering={ZoomIn} style={{ width: "100%" }}>
         <Text
           style={[
             styles.jalaliDateTxt,
@@ -47,30 +48,23 @@ const Date = ({ isHoliday, holidayDesc }: DateProps) => (
         >
           {getJalaliToday().verbose}
         </Text>
-      </MotiView>
+      </Animated.View>
       {holidayDesc && (
-        <MotiView
-          from={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{
-            type: "timing",
-            duration: 800,
-          }}
-        >
+        <Animated.View entering={FadeIn.duration(800)}>
           <Text style={styles.holidayDescTxt}>{holidayDesc}</Text>
-        </MotiView>
+        </Animated.View>
       )}
     </View>
-    <MotiView
-      from={{ opacity: 0, translateX: ms(50) }}
-      animate={{ opacity: 1, translateX: 0 }}
-      transition={{ type: "spring" }}
+    <Animated.View
+      entering={FadeInRight.springify().withInitialValues({
+        translateX: ms(50),
+      })}
       style={{ width: "100%" }}
     >
       <Text style={[styles.otherDateTxt, { alignSelf: "flex-end" }]}>
         {getHijriToday()}
       </Text>
-    </MotiView>
+    </Animated.View>
   </LinearGradient>
 );
 
@@ -92,6 +86,7 @@ const styles = StyleSheet.create({
     shadowRadius: 7.49,
     elevation: 12,
     padding: ms(20),
+    overflow: "hidden",
   },
   jalaliContainer: {
     width: "100%",
