@@ -58,7 +58,13 @@ $ npx expo start --dev-client
 
 ## License
 
-Distributed under the [MIT](https://opensource.org/licenses/MIT) License.
+This project is source-available under the PolyForm Noncommercial 1.0.0 license.
+
+You are welcome to view, use, modify, and share this project for non-commercial purposes.
+
+Commercial use, including selling this project, incorporating it into paid products or services, or distributing it as part of a commercial offering, is prohibited without prior written permission.
+
+See the LICENSE file for the full license text.
 
 ## Contact
 
