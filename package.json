@@ -1,6 +1,11 @@
 {
   "name": "chandome",
-  "version": "3.0.0",
+  "author": {
+    "name": "Nima Zarei",
+    "email": "nimazarei.dev@gmail.com",
+    "url": "https://github.com/n-ii-ma"
+  },
+  "version": "1.0.0",
   "main": "index.ts",
   "dependencies": {
     "@expo/ui": "~57.0.3",
