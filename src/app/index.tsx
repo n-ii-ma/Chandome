@@ -1,11 +1,10 @@
 import * as SplashScreen from "expo-splash-screen";
-import { useEffect, useState } from "react";
-import { RefreshControl, ScrollView, StyleSheet } from "react-native";
+import { useEffect } from "react";
+import { StyleSheet, View } from "react-native";
 import { requestWidgetUpdate } from "react-native-android-widget";
 import "react-native-reanimated";
 
-import { useRefresh } from "@/hooks/useRefresh";
-import { getHolidayDataAsync } from "@/utils/checkHoliday";
+import { getHolidayData } from "@/utils/checkHoliday";
 
 import Background from "@/components/Background";
 import DateWidget from "@/components/DateWidget";
@@ -14,33 +13,7 @@ SplashScreen.preventAutoHideAsync();
 SplashScreen.setOptions({ fade: true });
 
 const Index = () => {
-  const [isHoliday, setIsHoliday] = useState(false);
-  const [holidayDesc, setHolidayDesc] = useState("");
-  const [appIsReady, setAppIsReady] = useState(false);
-
-  const getDates = async () => {
-    const jalaliHoliday = await getHolidayDataAsync();
-
-    const holidayEvent = jalaliHoliday?.events?.find(
-      (event: any) => event.is_holiday,
-    );
-
-    setHolidayDesc(holidayEvent?.description ?? "");
-    setIsHoliday(jalaliHoliday?.is_holiday ?? false);
-  };
-
-  useEffect(() => {
-    async function prepare() {
-      try {
-        await getDates();
-      } catch (error) {
-      } finally {
-        setAppIsReady(true);
-      }
-    }
-
-    prepare();
-  }, []);
+  const { isHoliday, cause } = getHolidayData();
 
   // Request widget update after the app is opened to check if today's a holiday
   useEffect(() => {
@@ -48,35 +21,19 @@ const Index = () => {
       widgetName: "Date",
       renderWidget: () => <DateWidget isHoliday={isHoliday} />,
     });
-  }, [isHoliday]);
-
-  const { isRefreshing, handleRefresh } = useRefresh(getDates);
-
-  const onLayoutRootView = () => {
-    if (appIsReady) SplashScreen.hide();
-  };
-
-  if (!appIsReady) {
-    return null;
-  }
+  }, []);
 
   return (
-    <ScrollView
-      onLayout={onLayoutRootView}
-      refreshControl={
-        <RefreshControl refreshing={isRefreshing} onRefresh={handleRefresh} />
-      }
-      contentContainerStyle={styles.contentContainer}
-    >
-      <Background isHoliday={isHoliday} holidayDesc={holidayDesc} />
-    </ScrollView>
+    <View onLayout={() => SplashScreen.hide()} style={styles.container}>
+      <Background isHoliday={isHoliday} holidayDesc={cause} />
+    </View>
   );
 };
 
 export default Index;
 
 const styles = StyleSheet.create({
-  contentContainer: {
-    flexGrow: 1,
+  container: {
+    flex: 1,
   },
 });
