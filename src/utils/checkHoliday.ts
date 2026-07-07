@@ -1,31 +1,15 @@
-import AsyncStorage from "@react-native-async-storage/async-storage";
-import axios from "axios";
+import { format } from "date-fns-jalali";
 
-import { getJalaliToday } from "./dates";
+import holidays from "@/assets/data/holidays.json";
 
-const STORAGE_KEY = "@Holiday";
+export const getHolidayData = () => {
+  const today = new Date();
+  const dayId = format(today, "yyyyMMdd");
+  const events = (holidays as Record<string, string[]>)[dayId];
+  const isFriday = today.getDay() === 5; // 5 corresponds to Friday in JavaScript's getDay() method
 
-/** Callback to send request to check if today is a Jalali holiday */
-const checkJalaliHolidayAsync = async () => {
-  try {
-    const response = await axios.get(
-      `https://holidayapi.ir/jalali/${getJalaliToday().brief}`,
-      { timeout: 3000 },
-    );
-    const jsonHoliday = JSON.stringify(response.data);
-
-    await AsyncStorage.setItem(STORAGE_KEY, jsonHoliday);
-  } catch (error) {}
+  return {
+    isHoliday: events !== undefined || isFriday,
+    cause: events?.[0] ?? "",
+  };
 };
-
-/** Callback to get holiday data from Async Storage */
-const getHolidayDataAsync = async () => {
-  try {
-    await checkJalaliHolidayAsync();
-
-    const jsonHoliday = await AsyncStorage.getItem(STORAGE_KEY);
-    return jsonHoliday !== null ? JSON.parse(jsonHoliday) : null;
-  } catch (error) {}
-};
-
-export default getHolidayDataAsync;

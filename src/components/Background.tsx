@@ -1,7 +1,8 @@
-import { StyleSheet, Text, ImageBackground } from "react-native";
-import { ms } from "react-native-size-matters";
 import * as Application from "expo-application";
+import { ImageBackground, StyleSheet, Text } from "react-native";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
+
+import { ms } from "@/utils/scaling";
 
 import Date from "./Date";
 

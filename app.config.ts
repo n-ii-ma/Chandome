@@ -26,43 +26,40 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
   description:
     "An App which Gives Today's Date in Gregorian, Jalali, and Hijri",
   slug: "Chandome",
-  version: "8.0.0",
+  version: "1.0.0",
   orientation: "portrait",
   icon: "./assets/icons/icon.png",
+  scheme: "chandome",
   userInterfaceStyle: "light",
-  plugins: [
-    ["react-native-android-widget", widgetConfig],
-    ["expo-font", { fonts: ["./assets/fonts/Vazirmatn-Regular.ttf"] }],
-    [
-      "expo-splash-screen",
-      {
-        image: "./assets/icons/icon.png",
-        resizeMode: "contain",
-        backgroundColor: "#000000",
-        imageWidth: 200,
-      },
-    ],
-  ],
-  newArchEnabled: true,
-  experiments: {
-    tsconfigPaths: true,
-    reactCompiler: true,
-  },
-  assetBundlePatterns: ["**/*"],
-  ios: {
-    supportsTablet: false,
-  },
   android: {
     adaptiveIcon: {
       foregroundImage: "./assets/icons/icon_foreground.png",
       backgroundImage: "./assets/icons/icon_background.png",
       monochromeImage: "./assets/icons/icon_monochrome.png",
     },
+    predictiveBackGestureEnabled: false,
     package: "com.nima96.Chandome",
-    edgeToEdgeEnabled: true,
   },
   web: {
     favicon: "./assets/icons/favicon.png",
+  },
+  plugins: [
+    "expo-router",
+    ["react-native-android-widget", widgetConfig],
+    ["expo-font", { fonts: ["./assets/fonts/Vazirmatn-Regular.ttf"] }],
+    [
+      "expo-splash-screen",
+      {
+        backgroundColor: "#000000",
+        image: "./assets/icons/icon.png",
+        imageWidth: 200,
+        resizeMode: "contain",
+      },
+    ],
+  ],
+  experiments: {
+    typedRoutes: true,
+    reactCompiler: true,
   },
   extra: {
     eas: {
@@ -75,4 +72,5 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
   updates: {
     url: "https://u.expo.dev/5f361a7b-3d7f-4708-b9da-04949b38c2dd",
   },
+  owner: "nima96",
 });
