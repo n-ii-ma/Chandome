@@ -6,13 +6,13 @@ import Animated, {
   FadeInRight,
   ZoomIn,
 } from "react-native-reanimated";
-import { ms, vs } from "react-native-size-matters";
 
 import {
   getGregorianToday,
   getHijriToday,
   getJalaliToday,
 } from "@/utils/dates";
+import { ms, vs } from "@/utils/scaling";
 
 import type { DateProps } from "@/global/types";
 
