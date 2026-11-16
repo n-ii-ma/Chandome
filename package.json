@@ -11,7 +11,7 @@
     "@expo/ui": "~57.0.4",
     "@tabby_ai/hijri-converter": "^1.0.5",
     "date-fns-jalali": "^4.4.0-0",
-    "expo": "~57.0.4",
+    "expo": "~58.0.25",
     "expo-application": "~57.0.0",
     "expo-constants": "~57.0.3",
     "expo-dev-client": "~57.0.5",
